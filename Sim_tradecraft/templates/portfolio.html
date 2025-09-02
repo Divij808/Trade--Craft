@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+    :root {
+        --primary: #0097FB;
+        --foreground: #000000;
+        --muted: #F8F9FA;
+        --card-bg: #C8102E; /* extracted from your image (red shade) */
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: var(--muted);
+        color: var(--foreground);
+    }
+
+
+    nav {
+        position: sticky;
+        top: 0;
+        background-color: #FFFFFF;
+        z-index: 10;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 4rem;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #0f172a;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: #0f172a;
+        font-weight: 500;
+        text-decoration: none;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.25rem;
+        transition: background-color 0.2s;
+    }
+
+    .nav-link:hover {
+        background-color: var(--muted);
+    }
+
+    .nav-link.active {
+        color: var(--primary);
+        background-color: rgba(0, 151, 251, 0.1);
+    }
+
+
+    .container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 1rem;
+    }
+
+    .search-bar {
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .search-bar input {
+        width: 50%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    /* Stock Grid */
+    .Stock-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .Stock-card {
+        display: flex;
+        align-items: center;
+        background-color: var(--card-bg);
+        border-radius: 10px;
+        overflow: hidden;
+        color: #fff;
+        padding: 1rem;
+        min-height: 150px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .Stock-logo {
+        flex-shrink: 0;
+        margin-right: 1rem;
+    }
+
+    .Stock-logo img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 5px;
+    }
+
+    .Stock-content {
+        flex: 1;
+    }
+
+    .Stock-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .Stock-description {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
+
+    }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <h1 class="logo">Trade Craft - Stock Exchange Simulator</h1>
+    <div class="nav-links">
+      <a href="/trading" class="nav-link"><i class="fas fa-chart-line"></i> Trade</a>
+      <a href="/portfolio" class="nav-link - active"><i class="fas fa-wallet"></i> Portfolio</a>
+      <a href="/research" class="nav-link"><i class="fas fa-lightbulb"></i> Research</a>
+      <a href="/rules" class="nav-link"><i class="fa fa-gavel"></i> Rules</a>
+      <a href="/logout" class="nav-link"><i class="fa fa-sign-out"></i> Logout</a>
+    </div>
+  </div>
+</nav>
+<div class="Stock-content">
+    <h3> {{ Portfolio_info }}</h3>
+</div>
+
+<div class="container">
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search Stock..." onkeyup="filterStock()">
+    </div>
+
+    <div class="Stock-container" id="StockContainer"></div>
+</div>
+
+<script>
+    const StockData = {{ Stock | tojson }};
+    const StockContainer = document.getElementById('StockContainer');
+
+    function renderStock(data) {
+        StockContainer.innerHTML = '';
+        data.forEach(Stock => {
+            const StockCard = `
+                <div class="Stock-card">
+                    <div class="Stock-logo">
+                        <img src="${Stock.logo}" alt="${Stock.title}">
+                    </div>
+                    <div class="Stock-content">
+                        <h2 class="Stock-title">${Stock.title}</h2>
+                        <p class="Stock-description">${Stock.description}</p>
+                    </div>
+                </div>
+            `;
+            StockContainer.innerHTML += StockCard;
+        });
+    }
+
+    function filterStock() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        const filteredStock = StockData.filter(Stock =>
+            Stock.title.toLowerCase().includes(searchInput) ||
+            Stock.description.toLowerCase().includes(searchInput)
+        );
+        renderStock(filteredStock);
+    }
+
+    renderStock(StockData);
+</script>
+</body>
+</html>

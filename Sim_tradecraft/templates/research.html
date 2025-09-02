@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
+
+.dashboard {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+
+
+
+
+h2 {
+    margin-top: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    position: relative;
+}
+
+li:hover {
+    background-color: #f0f2f5;
+}
+
+li button {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+li:hover button {
+    display: inline-block;
+}
+
+#stock-info {
+    font-size: 1.2em;
+}
+
+
+
+#stock-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#stock-table th, #stock-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#stock-table tr:hover{
+    background-color: #f0f2f5;
+}
+
+#stock-table th {
+    background-color: #f4f4f4;
+}
+
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.add {
+    background-color: green;
+    color: white;
+}
+
+button.remove {
+    background-color: red;
+    color: white;
+}ding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    position: relative;
+}
+
+li:hover {
+    background-color: #f0f2f5;
+}
+
+li button {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+li:hover button {
+    display: inline-block;
+}
+
+#stock-info {
+    font-size: 1.2em;
+}
+
+
+
+#stock-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#stock-table th, #stock-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#stock-table tr:hover{
+    background-color: #f0f2f5;
+}
+
+#stock-table th {
+    background-color: #f4f4f4;
+}
+
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.add {
+    background-color: green;
+    color: white;
+}
+
+button.remove {
+    background-color: red;
+    color: white;
+}
+    :root {
+      --primary: #0097FB;
+      --foreground: #0f172a;
+      --muted: #F8F9FA;
+      --card-bg: #ffffff;
+      --accent: #C8102E;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--muted);
+      color: var(--foreground);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+     -color: #fff;
+      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 4rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--foreground);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--foreground);
+      font-weight: 500;
+      text-decoration: none;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.2s;
+    }
+
+    .nav-link:hover {
+      background-color: var(--muted);
+    }
+
+    .nav-link.active {
+      color: var(--primary);
+      background-color: rgba(0, 151, 251, 0.1);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .card h1 {
+      margin-bottom: 1.5rem;
+      font-size: 1.75rem;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      grid-column: span 2;
+      padding: 0.75rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #007ad6;
+    }
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+    <title>Stock Market Dashboard</title>
+
+</head>
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <h1 class="logo">Trade Craft - Stock Exchange Simulator</h1>
+      <div class="nav-links">
+        <a href="/trading" class="nav-link active"><i class="fas fa-chart-line"></i> Trade</a>
+        <a href="/Portfolio" class="nav-link"><i class="fas fa-wallet"></i> Portfolio</a>
+        <a href="/News" class="nav-link"><i class="fas fa-newspaper"></i> News</a>
+        <a href="/research" class="nav-link"><i class="fas fa-lightbulb"></i> Research</a>
+        <a href="/rules" class="nav-link"><i class="fa fa-gavel"></i> Rules</a>
+        <a href="/logout" class="nav-link"><i class="fa fa-sign-out"></i> Logout</a>
+      </div>
+    </div>
+  </nav>
+<div class="card">
+  <h1>Research</h1>
+</div>
+
+<div id="cards" class="grid three">
+  {% for c in companies %}
+    <div class="card">
+      <h2>{{ c.symbol }} — {{ c.name }}</h2>
+      <h3>{{ c.sector }}</h3>
+      <p>Base price: ${{ '%.2f'|format(c.base_price) }}</p>
+      <p>Live quote: <span id="q_{{ c.symbol }}">{{ '%.2f'|format(c.live_price) if c.live_price else 'N/A' }}</span></p>
+
+      <form method="post" action="{{ url_for('trade') }}">
+        <input type="hidden" name="symbol" value="{{ c.symbol }}">
+        <input type="hidden" name="qty" value="1">
+        <input type="hidden" name="side" value="BUY">
+        <button class="primary">Buy 1 share</button>
+      </form>
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+const previousPrices = {}; // to track previous prices for optional coloring
+
+async function updateQuotes() {
+    // Get all elements whose id starts with 'q_'
+    const symbolElements = document.querySelectorAll('[id^="q_"]');
+    if (symbolElements.length === 0) return;
+
+    // Build comma-separated symbol list
+    const symbols = Array.from(symbolElements).map(el => el.id.replace('q_', '')).join(',');
+
+    try {
+        const res = await fetch(`/api/quote?symbols=${symbols}`);
+        if (!res.ok) throw new Error("Network error");
+
+        const data = await res.json();
+
+        // Update each element
+        symbolElements.forEach(el => {
+            const symbol = el.id.replace('q_', '');
+            if (data.quotes[symbol] && data.quotes[symbol].price != null) {
+                const price = parseFloat(data.quotes[symbol].price).toFixed(2);
+
+                // Optional: track previous price for color change
+                const prev = previousPrices[symbol] || parseFloat(el.innerText.replace('$','')) || 0;
+                if (price > prev) {
+                    el.style.color = 'green';
+                } else if (price < prev) {
+                    el.style.color = 'red';
+                } else {
+                    el.style.color = 'black';
+                }
+
+                el.innerText = `$${price}`;
+                previousPrices[symbol] = parseFloat(price);
+            }
+        });
+
+    } catch (err) {
+        console.error("Failed to update quotes:", err);
+    }
+}
+
+// Run once on page load
+updateQuotes();
+
+// Run every 5 seconds
+setInterval(updateQuotes, 5000);
+</script>
+
+
+
+
+</body>
+</html>

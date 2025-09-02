@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rules</title>
+<!--Calling css-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <!--file specific css-->
+<style>
+    :root {
+      --primary: #0097FB;
+      --foreground: #000000;
+      --muted: #F8F9FA;
+      --card-bg: #C8102E;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: var(--muted);
+        color: ;
+    }
+
+
+
+
+
+
+</style>
+</head>
+<body style="background-color:light grey;">
+<!-- navigation-->
+<nav>
+  <div class="nav-container">
+    <h1 class="logo">Trade Craft - Stock Exchange Simulator</h1>
+    <div class="nav-links">
+      <a href="/trading" class="nav-link"><i class="fas fa-chart-line"></i> Trade</a>
+      <a href="/Portfolio" class="nav-link"><i class="fas fa-wallet"></i> Portfolio</a>
+      <a href="/News" class="nav-link"><i class="fas fa-newspaper"></i> News</a>
+      <a href="/research" class="nav-link"><i class="fas fa-lightbulb"></i> Research</a>
+      <a href="/rules" class="nav-link"><i class="fa fa-gavel"></i> Rules</a>
+      <a href="/logout" class="nav-link"><i class="fa fa-sign-out"></i> Logout</a>
+    </div>
+  </div>
+</nav>
+<!--div card for rules-->
+<div class="card">
+  <h1>Game Rules</h1>
+  <ul>
+    <li>Each new account starts with<b> <strong>$100,000</strong> </b>cash.</li>
+    <li>Trading is instant at the current simulated market price (market orders only).</li>
+    <li>No short selling or margin.</li>
+    <li>Prices are synthetic and change every minute with small random variation.</li>
+    <li>This app is for education only. No real money is involved.</li>
+  </ul>
+</div>
+
+</body>
+</html>

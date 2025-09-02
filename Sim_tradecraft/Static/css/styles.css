@@ -1,0 +1,309 @@
+:root {
+  --primary: #0097FB;      /* Main accent (blue) */
+  --foreground: #000000;   /* Text color */
+  --muted: #F8F9FA;        /* Light background (grayish) */
+  --card-bg: #C8102E;      /* Red shade (for cards) */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  width: 100vw;
+}
+
+
+.logo-panel {
+  background: url("/static/tradecraft.jpg") center center no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.form-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f8faff 0%, #e9f1ff 50%, #d7e4ff 100%);
+  height: 100%;
+  width: 100%;
+}
+
+.form-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.15);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+.form-box h2 {
+  margin-bottom: 24px;
+  font-size: 26px;
+  color: #2a2a2a;
+}
+
+/* Form styling */
+.form-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-box input {
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.form-box button {
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #2a7de1;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-box button:hover {
+  background: #1d5cad;
+}
+
+/* Links */
+.links {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #555;
+}
+.links a {
+  color: #2a7de1;
+  text-decoration: none;
+}
+.links a:hover {
+  text-decoration: underline;
+}
+/* Navigation Bar */
+    nav {
+      position: sticky;
+      top: 0;
+     -color: white;
+      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 4rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--foreground);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--foreground);
+      font-weight: 500;
+      text-decoration: none;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.2s;
+    }
+
+    .nav-link:hover {
+      background-color: var(--muted);
+    }
+
+    .nav-link.active {
+      color: var(--primary);
+      background-color: rgba(0, 151, 251, 0.1);
+    }
+    .card {
+      background-color: white;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+/* rules file. The code is making a box around the text and then centering the box iun the middle of horizontal web page*/
+    .card h1 {
+      margin-bottom: 1rem;
+    }
+
+    .card ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+
+    .card li {
+      margin-bottom: 0.5rem;
+    }
+
+
+
+/* News Section */
+/*search bar*/
+    .search-bar {
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+/* search bar input */
+    .search-bar input {
+        width: 50%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+.box {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 1rem;
+    }
+
+    .search-bar {
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .search-bar input {
+        width: 50%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    /* News Grid */
+    .news-box {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .news-card {
+        display: flex;
+        align-items: center;
+        background-color: var(--card-bg);
+        border-radius: 10px;
+        overflow: hidden;
+        color: #fff;
+        padding: 1rem;
+        min-height: 150px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .news-logo {
+        flex-shrink: 0;
+        margin-right: 1rem;
+    }
+
+    .news-logo img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 5px;
+    }
+
+    .news-content {
+        flex: 1;
+    }
+
+    .news-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .news-description {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
+
+    }
+
+
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.add {
+    background-color: green;
+    color: white;
+}
+
+button.remove {
+    background-color: red;
+    color: white;
+}
+
+
+
+    .boxes {
+      background-color: var(--boxes-bg);
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .boxes h1 {
+      margin-bottom: 1.5rem;
+      font-size: 1.75rem;
+      color: var(--accent);
+      text-align: center;
+    }
+
+
+
+
+
+        }

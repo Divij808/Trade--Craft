@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <title>Trade Craft - Trade</title>
+
+  <style>
+    :root {
+      --primary: #0097FB;
+      --foreground: #0f172a;
+      --muted: #F8F9FA;
+      --card-bg: #ffffff;
+      --accent: #C8102E;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--muted);
+      color: var(--foreground);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+     -color: #fff;
+      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 4rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--foreground);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--foreground);
+      font-weight: 500;
+      text-decoration: none;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.2s;
+    }
+
+    .nav-link:hover {
+      background-color: var(--muted);
+    }
+
+    .nav-link.active {
+      color: var(--primary);
+      background-color: rgba(0, 151, 251, 0.1);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .card h1 {
+      margin-bottom: 1.5rem;
+      font-size: 1.75rem;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      grid-column: span 2;
+      padding: 0.75rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #007ad6;
+    }
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <h1 class="logo">Trade Craft - Stock Exchange Simulator</h1>
+      <div class="nav-links">
+        <a href="/trading" class="nav-link active"><i class="fas fa-chart-line"></i> Trade</a>
+        <a href="/Portfolio" class="nav-link"><i class="fas fa-wallet"></i> Portfolio</a>
+        <a href="/News" class="nav-link"><i class="fas fa-newspaper"></i> News</a>
+        <a href="/research" class="nav-link"><i class="fas fa-lightbulb"></i> Research</a>
+        <a href="/rules" class="nav-link"><i class="fa fa-gavel"></i> Rules</a>
+        <a href="/logout" class="nav-link"><i class="fa fa-sign-out"></i> Logout</a>
+      </div>
+    </div>
+  </nav>
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="flash-messages">
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+  <div class="container">
+    <div class="card">
+      <h1>Place Trade</h1>
+<br>
+<br>
+      <form method="post" action="{{ url_for('trade') }}">
+        <div>
+          <label>Symbol</label>
+          <input name="symbol" type="text" required />
+        </div>
+        <div>
+          <label>Quantity</label>
+          <input name="qty" type="number" min="1" step="1" required>
+        </div>
+        <div>
+          <label>Side</label>
+          <select name="side" required>
+            <option value="BUY">Buy</option>
+            <option value="SELL">Sell</option>
+          </select>
+        </div>
+        <button type="submit">Submit Trade</button>
+      </form>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="card">
+  <h2>Recent Transactions</h2>
+<table class="table">
+
+                                                              <tr>
+                                                                    {% for header in headings %}
+                                                          <th>{{ header }}</th>
+                                                        {% endfor %}
+                                                  </tr>
+                                    {% for row in data %}
+                              <tr>
+                          {% for cell in row %}
+                    <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+          {% endfor %}
+        </table>
+
+</div>
+</div>
+
+</body>
+</html>
